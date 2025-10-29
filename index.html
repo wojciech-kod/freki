@@ -68,6 +68,36 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .contact-info {
+      text-align: center;
+      margin: 0.5rem 0;
+    }
+    
+    .language-switcher {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .lang-btn {
+      background: none;
+      border: 1px solid #d4af37;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .lang-btn:hover {
+      background: #d4af37;
     }
     
     /* Przyciski */
@@ -80,6 +110,8 @@
       border-radius: 8px;
       font-weight: bold;
       transition: background 0.3s;
+      border: none;
+      cursor: pointer;
     }
     
     .btn:hover {
@@ -152,6 +184,7 @@
       display: block;
       margin-bottom: 0.5rem;
       color: #333;
+      font-weight: bold;
     }
     
     .form-control {
@@ -205,30 +238,245 @@
       justify-content: center;
       opacity: 0;
       transition: opacity 0.3s;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
     }
     
     .gallery-item:hover .gallery-overlay {
       opacity: 1;
     }
     
-    /* Responsywność */
+    /* Partnerzy */
+    .partners {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .partner-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .partner-card img {
+      max-width: 150px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+    
+    /* Kontakt - układ grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .contact-info p {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-info span {
+      margin-right: 0.5rem;
+    }
+    
+    /* Sticky navigation dla mobile */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #0a1a2f;
+      padding: 0.5rem;
+      z-index: 1000;
+    }
+    
+    .nav-links {
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+    
+    /* ========== RESPONSYWNOŚĆ ========== */
+    
+    /* Tablety (768px - 1024px) */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 15px;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      
+      .contact-grid {
+        gap: 2rem;
+      }
+    }
+    
+    /* Telefony (do 768px) */
     @media (max-width: 768px) {
       .header-content {
         flex-direction: column;
+        text-align: center;
         gap: 1rem;
+      }
+      
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .contact-info {
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
       }
       
       .section-title {
         font-size: 2rem;
+        margin-bottom: 2rem;
       }
       
       section {
-        padding: 2rem 0;
+        padding: 3rem 0;
       }
       
       .hero {
         padding: 4rem 0;
       }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+      
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .gallery-item {
+        height: 200px;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .partners {
+        grid-template-columns: 1fr;
+      }
+      
+      .partner-card {
+        padding: 1.5rem;
+      }
+      
+      /* Pokazujemy mobile nav na telefonach */
+      .mobile-nav {
+        display: block;
+      }
+      
+      /* Dodajemy padding na dole strony żeby content nie był zasłonięty przez mobile nav */
+      body {
+        padding-bottom: 70px;
+      }
+    }
+    
+    /* Małe telefony (do 480px) */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 10px;
+      }
+      
+      .logo {
+        font-size: 1.2rem;
+      }
+      
+      .contact-info {
+        font-size: 0.8rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero h2 {
+        font-size: 1.6rem;
+      }
+      
+      .hero p {
+        font-size: 0.9rem;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .card {
+        padding: 1rem;
+      }
+      
+      .icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Duże ekrany (powyżej 1200px) */
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1400px;
+      }
+    }
+    
+    /* Orientacja pozioma telefonów */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero {
+        padding: 3rem 0;
+      }
+      
+      section {
+        padding: 2rem 0;
+      }
+    }
+    
+    .text-center {
+      text-align: center;
     }
   </style>
 </head>
@@ -237,9 +485,9 @@
   <header class="bg-dark-blue text-white">
     <div class="container">
       <div class="header-content">
-        <h1 class="text-gold">Rafał Pistrakiewicz Bau & Renovierung</h1>
+        <h1 class="logo text-gold">Rafał Pistrakiewicz Bau & Renovierung</h1>
         <div class="contact-info">
-          <p>📞 +49 123 456 7890 | ✉️ kontakt@pistrakiewiczbau.de</p>
+          📞 +49 123 456 7890 | ✉️ kontakt@pistrakiewiczbau.de
         </div>
         <div class="language-switcher">
           <button class="lang-btn" onclick="setLang('pl')">🇵🇱 PL</button>
@@ -252,8 +500,8 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Polska fachowość, niemiecka precyzja</h2>
-      <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      <h2>Polska fachowość, niemiecka precyzja</h2>
+      <p style="margin: 1rem auto 2rem; max-width: 600px;">
         Zaufaj doświadczeniu i rzetelności. Nasze realizacje mówią same za siebie.
       </p>
       <a href="#kontakt" class="btn">Zapytaj o wycenę</a>
@@ -320,21 +568,42 @@
       <div class="gallery">
         <div class="gallery-item">
           <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Remont mieszkania">
-          <div class="gallery-overlay text-white">
+          <div class="gallery-overlay">
             <h3>Remont mieszkania</h3>
           </div>
         </div>
         <div class="gallery-item">
           <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Nowy dom">
-          <div class="gallery-overlay text-white">
+          <div class="gallery-overlay">
             <h3>Nowy dom</h3>
           </div>
         </div>
         <div class="gallery-item">
           <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Elewacja">
-          <div class="gallery-overlay text-white">
+          <div class="gallery-overlay">
             <h3>Elewacja</h3>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnerzy -->
+  <section id="partnerzy" class="bg-gray">
+    <div class="container">
+      <h2 class="section-title">Partnerzy i współpraca</h2>
+      <div class="partners">
+        <div class="partner-card">
+          <img src="https://via.placeholder.com/150x80?text=Partner+1" alt="Partner 1">
+          <p class="font-semibold">Pol-Bau GmbH</p>
+        </div>
+        <div class="partner-card">
+          <img src="https://via.placeholder.com/150x80?text=Partner+2" alt="Partner 2">
+          <p class="font-semibold">HausRenovieren24</p>
+        </div>
+        <div class="partner-card">
+          <img src="https://via.placeholder.com/150x80?text=Partner+3" alt="Partner 3">
+          <p class="font-semibold">ElektroKraft</p>
         </div>
       </div>
     </div>
@@ -345,37 +614,35 @@
     <div class="container">
       <h2 class="section-title text-gold">Skontaktuj się z nami</h2>
       
-      <div style="max-width: 800px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
-          <div>
-            <p style="margin-bottom: 2rem; font-size: 1.1rem;">
-              Zadzwoń lub napisz, aby omówić swój projekt.
-            </p>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-              <p>📞 +49 123 456 7890</p>
-              <p>✉️ kontakt@pistrakiewiczbau.de</p>
-              <p>📍 Działamy na terenie całych Niemiec</p>
+      <div class="contact-grid">
+        <div>
+          <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+            Zadzwoń lub napisz, aby omówić swój projekt.
+          </p>
+          <div class="contact-info">
+            <p>📞 +49 123 456 7890</p>
+            <p>✉️ kontakt@pistrakiewiczbau.de</p>
+            <p>📍 Działamy na terenie całych Niemiec</p>
+          </div>
+        </div>
+        
+        <div class="bg-white" style="padding: 2rem; border-radius: 16px;">
+          <form id="contactForm">
+            <div class="form-group">
+              <label style="color: #333;">Imię i nazwisko</label>
+              <input type="text" class="form-control" required>
             </div>
-          </div>
-          
-          <div class="bg-white" style="padding: 2rem; border-radius: 16px;">
-            <form id="contactForm">
-              <div class="form-group">
-                <label style="color: #333;">Imię i nazwisko</label>
-                <input type="text" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label style="color: #333;">E-mail</label>
-                <input type="email" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label style="color: #333;">Wiadomość</label>
-                <textarea class="form-control" rows="4" required></textarea>
-              </div>
-              <button type="submit" class="btn" style="width: 100%;">Wyślij wiadomość</button>
-            </form>
-            <div id="formMessage" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 8px;"></div>
-          </div>
+            <div class="form-group">
+              <label style="color: #333;">E-mail</label>
+              <input type="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label style="color: #333;">Wiadomość</label>
+              <textarea class="form-control" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Wyślij wiadomość</button>
+          </form>
+          <div id="formMessage" style="display: none; margin-top: 1rem; padding: 1rem; border-radius: 8px;"></div>
         </div>
       </div>
     </div>
@@ -387,6 +654,32 @@
       <p>© 2025 Rafał Pistrakiewicz Bau & Renovierung | Stworzone z dumą w Niemczech 🇵🇱🇩🇪</p>
     </div>
   </footer>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <div class="nav-links">
+      <a href="#o-nas">
+        <span>👥</span>
+        <span>O nas</span>
+      </a>
+      <a href="#uslugi">
+        <span>🛠️</span>
+        <span>Usługi</span>
+      </a>
+      <a href="#realizacje">
+        <span>📸</span>
+        <span>Realizacje</span>
+      </a>
+      <a href="#partnerzy">
+        <span>🤝</span>
+        <span>Partnerzy</span>
+      </a>
+      <a href="#kontakt">
+        <span>📞</span>
+        <span>Kontakt</span>
+      </a>
+    </div>
+  </nav>
 
   <script>
     // Podstawowy skrypt
@@ -412,8 +705,25 @@
       }, 5000);
     });
 
+    // Płynne przewijanie do sekcji
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
     console.log('Strona załadowana poprawnie!');
   </script>
 </body>
 </html>
-
