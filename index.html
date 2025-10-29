@@ -14,11 +14,55 @@
   <meta property="og:type" content="website">
   
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body { font-family: 'Poppins', sans-serif; }
     .lang-btn { cursor: pointer; transition: 0.3s; }
     .lang-btn:hover { color: #d4af37; }
     .smooth-scroll { scroll-behavior: smooth; }
+    
+    /* Mobile Navigation */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #0a1a2f;
+      padding: 0.5rem;
+      z-index: 1000;
+      border-top: 1px solid #1e3a5f;
+    }
+    
+    .nav-icons {
+      display: flex;
+      justify-content: space-around;
+    }
+    
+    .nav-icon {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.7rem;
+      padding: 0.5rem;
+    }
+    
+    .nav-icon i {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    /* Dodaj padding na dole dla mobile nav */
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 70px;
+      }
+      .mobile-bottom-nav {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 smooth-scroll">
@@ -26,13 +70,14 @@
   <!-- 🔹 Header -->
   <header class="bg-[#0a1a2f] text-white py-4 shadow-lg sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center px-6">
-      <h1 class="text-2xl font-bold text-[#d4af37]">Rafał Pistrakiewicz Bau & Renovierung</h1>
+      <h1 class="text-xl md:text-2xl font-bold text-[#d4af37]">Rafał Pistrakiewicz Bau & Renovierung</h1>
       
       <!-- Menu desktop -->
       <nav class="hidden md:flex space-x-8">
         <a href="#o-nas" class="hover:text-[#d4af37] transition-colors" data-pl="O nas" data-de="Über uns">O nas</a>
         <a href="#uslugi" class="hover:text-[#d4af37] transition-colors" data-pl="Usługi" data-de="Dienstleistungen">Usługi</a>
         <a href="#realizacje" class="hover:text-[#d4af37] transition-colors" data-pl="Realizacje" data-de="Projekte">Realizacje</a>
+        <a href="#opinie" class="hover:text-[#d4af37] transition-colors" data-pl="Opinie" data-de="Bewertungen">Opinie</a>
         <a href="#partnerzy" class="hover:text-[#d4af37] transition-colors" data-pl="Partnerzy" data-de="Partner">Partnerzy</a>
         <a href="#kontakt" class="hover:text-[#d4af37] transition-colors" data-pl="Kontakt" data-de="Kontakt">Kontakt</a>
       </nav>
@@ -63,6 +108,7 @@
         <a href="#o-nas" class="text-white hover:text-[#d4af37] transition-colors" data-pl="O nas" data-de="Über uns">O nas</a>
         <a href="#uslugi" class="text-white hover:text-[#d4af37] transition-colors" data-pl="Usługi" data-de="Dienstleistungen">Usługi</a>
         <a href="#realizacje" class="text-white hover:text-[#d4af37] transition-colors" data-pl="Realizacje" data-de="Projekte">Realizacje</a>
+        <a href="#opinie" class="text-white hover:text-[#d4af37] transition-colors" data-pl="Opinie" data-de="Bewertungen">Opinie</a>
         <a href="#partnerzy" class="text-white hover:text-[#d4af37] transition-colors" data-pl="Partnerzy" data-de="Partner">Partnerzy</a>
         <a href="#kontakt" class="text-white hover:text-[#d4af37] transition-colors" data-pl="Kontakt" data-de="Kontakt">Kontakt</a>
         <div class="pt-4 border-t border-gray-700">
@@ -74,92 +120,145 @@
   </header>
 
   <!-- 🔹 Hero -->
-  <section class="bg-gradient-to-r from-[#0a1a2f] to-[#1e3a5f] text-white py-24 text-center">
+  <section class="bg-gradient-to-r from-[#0a1a2f] to-[#1e3a5f] text-white py-20 md:py-24 text-center">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-4" data-pl="Polska fachowość, niemiecka precyzja" data-de="Polnische Facharbeit, deutsche Präzision">Polska fachowość, niemiecka precyzja</h2>
-      <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-8" data-pl="Zaufaj doświadczeniu i rzetelności. Nasze realizacje mówią same za siebie." data-de="Vertrauen Sie auf Erfahrung und Zuverlässigkeit. Unsere Arbeiten sprechen für sich.">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" data-pl="Polska fachowość, niemiecka precyzja" data-de="Polnische Facharbeit, deutsche Präzision">Polska fachowość, niemiecka precyzja</h2>
+      <p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto mb-8" data-pl="Zaufaj doświadczeniu i rzetelności. Nasze realizacje mówią same za siebie." data-de="Vertrauen Sie auf Erfahrung und Zuverlässigkeit. Unsere Arbeiten sprechen für sich.">
         Zaufaj doświadczeniu i rzetelności. Nasze realizacje mówią same za siebie.
       </p>
-      <a href="#kontakt" class="bg-[#d4af37] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8941f] transition-colors inline-block" 
-         data-pl="Zapytaj o wycenę" data-de="Kostenangebot anfordern">Zapytaj o wycenę</a>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#kontakt" class="bg-[#d4af37] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8941f] transition-colors inline-block text-center" 
+           data-pl="Zapytaj o wycenę" data-de="Kostenangebot anfordern">Zapytaj o wycenę</a>
+        <a href="#realizacje" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#0a1a2f] transition-colors inline-block text-center" 
+           data-pl="Zobacz realizacje" data-de="Projekte ansehen">Zobacz realizacje</a>
+      </div>
     </div>
   </section>
 
   <!-- 🔹 O nas -->
-  <section id="o-nas" class="py-16 container mx-auto px-6">
-    <h3 class="text-3xl font-semibold text-center mb-8 text-[#0a1a2f]" data-pl="O nas" data-de="Über uns">O nas</h3>
-    <p class="text-center text-lg max-w-3xl mx-auto mb-12" data-pl="Firma Rafał Pistrakiewicz Bau & Renovierung działa na rynku niemieckim, oferując kompleksowe usługi budowlane i remontowe. Naszą misją jest połączenie polskiej solidności z niemiecką dokładnością." data-de="Das Unternehmen Rafał Pistrakiewicz Bau & Renovierung bietet auf dem deutschen Markt umfassende Bau- und Renovierungsdienstleistungen an. Unsere Mission ist es, polnische Zuverlässigkeit mit deutscher Präzision zu verbinden.">
+  <section id="o-nas" class="py-12 md:py-16 container mx-auto px-6">
+    <h3 class="text-2xl md:text-3xl font-semibold text-center mb-8 text-[#0a1a2f]" data-pl="O nas" data-de="Über uns">O nas</h3>
+    <p class="text-center text-base md:text-lg max-w-3xl mx-auto mb-8 md:mb-12" data-pl="Firma Rafał Pistrakiewicz Bau & Renovierung działa na rynku niemieckim, oferując kompleksowe usługi budowlane i remontowe. Naszą misją jest połączenie polskiej solidności z niemiecką dokładnością." data-de="Das Unternehmen Rafał Pistrakiewicz Bau & Renovierung bietet auf dem deutschen Markt umfassende Bau- und Renovierungsdienstleistungen an. Unsere Mission ist es, polnische Zuverlässigkeit mit deutscher Präzision zu verbinden.">
       Firma Rafał Pistrakiewicz Bau & Renovierung działa na rynku niemieckim, oferując kompleksowe usługi budowlane i remontowe. Naszą misją jest połączenie polskiej solidności z niemiecką dokładnością.
     </p>
     
-    <div class="grid md:grid-cols-3 gap-8 mt-12">
-      <div class="text-center">
-        <div class="bg-[#d4af37] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">10+</div>
-        <h4 class="text-xl font-semibold mb-2" data-pl="Lat doświadczenia" data-de="Jahre Erfahrung">Lat doświadczenia</h4>
-        <p class="text-gray-600" data-pl="W branży budowlanej" data-de="In der Baubranche">W branży budowlanej</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-8 md:mt-12">
+      <div class="text-center bg-white p-6 rounded-2xl shadow-lg">
+        <div class="bg-[#d4af37] text-white w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl md:text-2xl">10+</div>
+        <h4 class="text-lg md:text-xl font-semibold mb-2" data-pl="Lat doświadczenia" data-de="Jahre Erfahrung">Lat doświadczenia</h4>
+        <p class="text-gray-600 text-sm md:text-base" data-pl="W branży budowlanej" data-de="In der Baubranche">W branży budowlanej</p>
       </div>
-      <div class="text-center">
-        <div class="bg-[#d4af37] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">200+</div>
-        <h4 class="text-xl font-semibold mb-2" data-pl="Zrealizowanych projektów" data-de="Abgeschlossene Projekte">Zrealizowanych projektów</h4>
-        <p class="text-gray-600" data-pl="Zadowolonych klientów" data-de="Zufriedene Kunden">Zadowolonych klientów</p>
+      <div class="text-center bg-white p-6 rounded-2xl shadow-lg">
+        <div class="bg-[#d4af37] text-white w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl md:text-2xl">200+</div>
+        <h4 class="text-lg md:text-xl font-semibold mb-2" data-pl="Zrealizowanych projektów" data-de="Abgeschlossene Projekte">Zrealizowanych projektów</h4>
+        <p class="text-gray-600 text-sm md:text-base" data-pl="Zadowolonych klientów" data-de="Zufriedene Kunden">Zadowolonych klientów</p>
       </div>
-      <div class="text-center">
-        <div class="bg-[#d4af37] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">100%</div>
-        <h4 class="text-xl font-semibold mb-2" data-pl="Gwarancja jakości" data-de="Qualitätsgarantie">Gwarancja jakości</h4>
-        <p class="text-gray-600" data-pl="Terminowo i solidnie" data-de="Termingerecht und solide">Terminowo i solidnie</p>
+      <div class="text-center bg-white p-6 rounded-2xl shadow-lg">
+        <div class="bg-[#d4af37] text-white w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl md:text-2xl">100%</div>
+        <h4 class="text-lg md:text-xl font-semibold mb-2" data-pl="Gwarancja jakości" data-de="Qualitätsgarantie">Gwarancja jakości</h4>
+        <p class="text-gray-600 text-sm md:text-base" data-pl="Terminowo i solidnie" data-de="Termingerecht und solide">Terminowo i solidnie</p>
       </div>
     </div>
   </section>
 
   <!-- 🔹 Usługi -->
-  <section id="uslugi" class="bg-[#f9fafb] py-16">
+  <section id="uslugi" class="bg-[#f9fafb] py-12 md:py-16">
     <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-semibold text-center mb-12 text-[#0a1a2f]" data-pl="Nasze usługi" data-de="Unsere Dienstleistungen">Nasze usługi</h3>
-      <div class="grid md:grid-cols-3 gap-8">
+      <h3 class="text-2xl md:text-3xl font-semibold text-center mb-8 md:mb-12 text-[#0a1a2f]" data-pl="Nasze usługi" data-de="Unsere Dienstleistungen">Nasze usługi</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-          <div class="bg-[#0a1a2f] text-[#d4af37] w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🏠</div>
-          <h4 class="text-xl font-semibold mb-2 text-[#d4af37]" data-pl="Remonty wnętrz" data-de="Innenrenovierungen">Remonty wnętrz</h4>
-          <p class="text-gray-600" data-pl="Kompleksowe wykończenia mieszkań i domów." data-de="Komplette Renovierungen von Wohnungen und Häusern.">Kompleksowe wykończenia mieszkań i domów.</p>
+          <div class="bg-[#0a1a2f] text-[#d4af37] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl md:text-2xl">🏠</div>
+          <h4 class="text-lg md:text-xl font-semibold mb-2 text-[#d4af37]" data-pl="Remonty wnętrz" data-de="Innenrenovierungen">Remonty wnętrz</h4>
+          <p class="text-gray-600 text-sm md:text-base" data-pl="Kompleksowe wykończenia mieszkań i domów." data-de="Komplette Renovierungen von Wohnungen und Häusern.">Kompleksowe wykończenia mieszkań i domów.</p>
         </div>
         <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-          <div class="bg-[#0a1a2f] text-[#d4af37] w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🏗️</div>
-          <h4 class="text-xl font-semibold mb-2 text-[#d4af37]" data-pl="Budowa domów" data-de="Hausbau">Budowa domów</h4>
-          <p class="text-gray-600" data-pl="Od fundamentów po dach – budujemy solidnie i terminowo." data-de="Vom Fundament bis zum Dach – solide und termingerecht.">Od fundamentów po dach – budujemy solidnie i terminowo.</p>
+          <div class="bg-[#0a1a2f] text-[#d4af37] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl md:text-2xl">🏗️</div>
+          <h4 class="text-lg md:text-xl font-semibold mb-2 text-[#d4af37]" data-pl="Budowa domów" data-de="Hausbau">Budowa domów</h4>
+          <p class="text-gray-600 text-sm md:text-base" data-pl="Od fundamentów po dach – budujemy solidnie i terminowo." data-de="Vom Fundament bis zum Dach – solide und termingerecht.">Od fundamentów po dach – budujemy solidnie i terminowo.</p>
         </div>
         <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-          <div class="bg-[#0a1a2f] text-[#d4af37] w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🎨</div>
-          <h4 class="text-xl font-semibold mb-2 text-[#d4af37]" data-pl="Malowanie i elewacje" data-de="Malerarbeiten und Fassaden">Malowanie i elewacje</h4>
-          <p class="text-gray-600" data-pl="Nowoczesne technologie i estetyka, która trwa latami." data-de="Moderne Technologien und Ästhetik, die jahrelang hält.">Nowoczesne technologie i estetyka, która trwa latami.</p>
+          <div class="bg-[#0a1a2f] text-[#d4af37] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center mx-auto mb-4 text-xl md:text-2xl">🎨</div>
+          <h4 class="text-lg md:text-xl font-semibold mb-2 text-[#d4af37]" data-pl="Malowanie i elewacje" data-de="Malerarbeiten und Fassaden">Malowanie i elewacje</h4>
+          <p class="text-gray-600 text-sm md:text-base" data-pl="Nowoczesne technologie i estetyka, która trwa latami." data-de="Moderne Technologien und Ästhetik, die jahrelang hält.">Nowoczesne technologie i estetyka, która trwa latami.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 🔹 Galeria realizacji -->
-  <section id="realizacje" class="py-16 bg-white">
+  <section id="realizacje" class="py-12 md:py-16 bg-white">
     <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-semibold text-center mb-12 text-[#0a1a2f]" 
+      <h3 class="text-2xl md:text-3xl font-semibold text-center mb-8 md:mb-12 text-[#0a1a2f]" 
           data-pl="Nasze realizacje" data-de="Unsere Projekte">Nasze realizacje</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
           <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-               alt="Realizacja 1" class="w-full h-64 object-cover transition-transform group-hover:scale-105" loading="lazy">
+               alt="Realizacja 1" class="w-full h-48 md:h-64 object-cover transition-transform group-hover:scale-105" loading="lazy">
           <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="text-white font-semibold text-lg" data-pl="Remont mieszkania" data-de="Wohnungsrenovierung">Remont mieszkania</span>
+            <span class="text-white font-semibold text-base md:text-lg" data-pl="Remont mieszkania" data-de="Wohnungsrenovierung">Remont mieszkania</span>
           </div>
         </div>
         <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
           <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-               alt="Realizacja 2" class="w-full h-64 object-cover transition-transform group-hover:scale-105" loading="lazy">
+               alt="Realizacja 2" class="w-full h-48 md:h-64 object-cover transition-transform group-hover:scale-105" loading="lazy">
           <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="text-white font-semibold text-lg" data-pl="Nowy dom" data-de="Neues Haus">Nowy dom</span>
+            <span class="text-white font-semibold text-base md:text-lg" data-pl="Nowy dom" data-de="Neues Haus">Nowy dom</span>
           </div>
         </div>
         <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
           <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-               alt="Realizacja 3" class="w-full h-64 object-cover transition-transform group-hover:scale-105" loading="lazy">
+               alt="Realizacja 3" class="w-full h-48 md:h-64 object-cover transition-transform group-hover:scale-105" loading="lazy">
           <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="text-white font-semibold text-lg" data-pl="Elewacja" data-de="Fassade">Elewacja</span>
+            <span class="text-white font-semibold text-base md:text-lg" data-pl="Elewacja" data-de="Fassade">Elewacja</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Nowa sekcja: Opinie klientów -->
+  <section id="opinie" class="py-12 md:py-16 bg-[#f9fafb]">
+    <div class="container mx-auto px-6">
+      <h3 class="text-2xl md:text-3xl font-semibold text-center mb-8 md:mb-12 text-[#0a1a2f]" 
+          data-pl="Opinie naszych klientów" data-de="Kundenbewertungen">Opinie naszych klientów</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 text-xl">★★★★★</div>
+          </div>
+          <p class="text-gray-600 mb-4" data-pl="Profesjonalna obsługa i terminowe wykonanie. Polecam!" data-de="Professioneller Service und termingerechte Ausführung. Sehr zu empfehlen!">Profesjonalna obsługa i terminowe wykonanie. Polecam!</p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+            <div>
+              <p class="font-semibold">Anna Nowak</p>
+              <p class="text-sm text-gray-500" data-pl="Remont mieszkania, Berlin" data-de="Wohnungsrenovierung, Berlin">Remont mieszkania, Berlin</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 text-xl">★★★★★</div>
+          </div>
+          <p class="text-gray-600 mb-4" data-pl="Solidna firma, dokładnie tak jak obiecali. Jakość na najwyższym poziomie." data-de="Solides Unternehmen, genau wie versprochen. Qualität auf höchstem Niveau.">Solidna firma, dokładnie tak jak obiecali. Jakość na najwyższym poziomie.</p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+            <div>
+              <p class="font-semibold">Thomas Schmidt</p>
+              <p class="text-sm text-gray-500" data-pl="Budowa domu, Hamburg" data-de="Hausbau, Hamburg">Budowa domu, Hamburg</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 text-xl">★★★★★</div>
+          </div>
+          <p class="text-gray-600 mb-4" data-pl="Bardzo polecam! Rzetelni fachowcy w przystępnej cenie." data-de="Sehr empfehlenswert! Zuverlässige Fachleute zu einem fairen Preis.">Bardzo polecam! Rzetelni fachowcy w przystępnej cenie.</p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
+            <div>
+              <p class="font-semibold">Robert Weber</p>
+              <p class="text-sm text-gray-500" data-pl="Malowanie, Monachium" data-de="Malerarbeiten, München">Malowanie, Monachium</p>
+            </div>
           </div>
         </div>
       </div>
@@ -167,9 +266,9 @@
   </section>
 
   <!-- 🔹 Partnerzy -->
-  <section id="partnerzy" class="py-16 container mx-auto px-6">
-    <h3 class="text-3xl font-semibold text-center mb-12 text-[#0a1a2f]" data-pl="Partnerzy i współpraca" data-de="Partner und Zusammenarbeit">Partnerzy i współpraca</h3>
-    <div class="grid md:grid-cols-3 gap-8 text-center">
+  <section id="partnerzy" class="py-12 md:py-16 container mx-auto px-6">
+    <h3 class="text-2xl md:text-3xl font-semibold text-center mb-8 md:mb-12 text-[#0a1a2f]" data-pl="Partnerzy i współpraca" data-de="Partner und Zusammenarbeit">Partnerzy i współpraca</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
       <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
         <img src="https://via.placeholder.com/150x80?text=Partner+1" class="mx-auto mb-4" alt="Partner 1" loading="lazy">
         <p class="font-semibold">Pol-Bau GmbH</p>
@@ -186,29 +285,29 @@
   </section>
 
   <!-- 🔹 Kontakt -->
-  <section id="kontakt" class="bg-[#0a1a2f] text-white py-16">
+  <section id="kontakt" class="bg-[#0a1a2f] text-white py-12 md:py-16">
     <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-semibold mb-8 text-[#d4af37] text-center" data-pl="Skontaktuj się z nami" data-de="Kontaktieren Sie uns">Skontaktuj się z nami</h3>
+      <h3 class="text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-[#d4af37] text-center" data-pl="Skontaktuj się z nami" data-de="Kontaktieren Sie uns">Skontaktuj się z nami</h3>
       
-      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
         <div>
-          <p class="mb-6 text-lg" data-pl="Zadzwoń lub napisz, aby omówić swój projekt." data-de="Rufen Sie an oder schreiben Sie uns, um Ihr Projekt zu besprechen.">Zadzwoń lub napisz, aby omówić swój projekt.</p>
-          <div class="space-y-4">
-            <p class="text-lg flex items-center">
+          <p class="mb-4 md:mb-6 text-base md:text-lg" data-pl="Zadzwoń lub napisz, aby omówić swój projekt." data-de="Rufen Sie an oder schreiben Sie uns, um Ihr Projekt zu besprechen.">Zadzwoń lub napisz, aby omówić swój projekt.</p>
+          <div class="space-y-3 md:space-y-4">
+            <p class="text-base md:text-lg flex items-center">
               <span class="mr-3">📞</span> +49 123 456 7890
             </p>
-            <p class="text-lg flex items-center">
+            <p class="text-base md:text-lg flex items-center">
               <span class="mr-3">✉️</span> kontakt@pistrakiewiczbau.de
             </p>
-            <p class="text-lg flex items-center">
+            <p class="text-base md:text-lg flex items-center">
               <span class="mr-3">📍</span> <span data-pl="Działamy na terenie całych Niemiec" data-de="Wir arbeiten in ganz Deutschland">Działamy na terenie całych Niemiec</span>
             </p>
           </div>
         </div>
         
         <!-- Formularz kontaktowy -->
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <form id="contactForm" class="space-y-6">
+        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+          <form id="contactForm" class="space-y-4 md:space-y-6">
             <div>
               <label for="name" class="block text-gray-700 mb-2" data-pl="Imię i nazwisko" data-de="Name">Imię i nazwisko</label>
               <input type="text" id="name" name="name" required 
@@ -239,6 +338,32 @@
       <p>© 2025 Rafał Pistrakiewicz Bau & Renovierung | <span data-pl="Stworzone z dumą w Niemczech" data-de="Mit Stolz in Deutschland erstellt">Stworzone z dumą w Niemczech</span> 🇵🇱🇩🇪</p>
     </div>
   </footer>
+
+  <!-- 🔹 Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <div class="nav-icons">
+      <a href="#o-nas" class="nav-icon">
+        <i class="fas fa-info-circle"></i>
+        <span data-pl="O nas" data-de="Über uns">O nas</span>
+      </a>
+      <a href="#uslugi" class="nav-icon">
+        <i class="fas fa-tools"></i>
+        <span data-pl="Usługi" data-de="Leistungen">Usługi</span>
+      </a>
+      <a href="#realizacje" class="nav-icon">
+        <i class="fas fa-images"></i>
+        <span data-pl="Realizacje" data-de="Projekte">Realizacje</span>
+      </a>
+      <a href="#opinie" class="nav-icon">
+        <i class="fas fa-star"></i>
+        <span data-pl="Opinie" data-de="Bewertungen">Opinie</span>
+      </a>
+      <a href="#kontakt" class="nav-icon">
+        <i class="fas fa-phone"></i>
+        <span data-pl="Kontakt" data-de="Kontakt">Kontakt</span>
+      </a>
+    </div>
+  </nav>
 
   <!-- Strukturalne dane JSON-LD -->
   <script type="application/ld+json">
@@ -309,6 +434,24 @@
       setTimeout(() => {
         formMessage.classList.add('hidden');
       }, 5000);
+    });
+
+    // Płynne przewijanie do sekcji
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
 
     // Przy ładowaniu strony
