@@ -1,111 +1,32 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rafał Pistrakiewicz Bau & Renovierung</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-    .lang-btn { cursor: pointer; transition: 0.3s; }
-    .lang-btn:hover { color: #d4af37; }
-  </style>
-</head>
-<body class="bg-gray-50 text-gray-900">
+// Obecny kod ma ograniczenia - proponuję rozszerzenie:
+const translations = {
+  pl: {
+    "Polska fachowość, niemiecka precyzja": "Polska fachowość, niemiecka precyzja",
+    "Zaufaj doświadczeniu...": "Zaufaj doświadczeniu i rzetelności...",
+    // wszystkie teksty po polsku
+  },
+  de: {
+    "Polska fachowość, niemiecka precyzja": "Polnische Facharbeit, deutsche Präzision",
+    "Zaufaj doświadczeniu...": "Vertrauen Sie auf Erfahrung...",
+    // wszystkie teksty po niemiecku
+  }
+};
 
-  <!-- 🔹 Header -->
-  <header class="bg-[#0a1a2f] text-white py-4 shadow-lg">
-    <div class="container mx-auto flex justify-between items-center px-6">
-      <h1 class="text-2xl font-bold text-[#d4af37]">Rafał Pistrakiewicz Bau & Renovierung</h1>
-      <div class="text-sm">
-        📞 +49 123 456 7890 | ✉️ kontakt@pistrakiewiczbau.de
-      </div>
-      <div class="flex gap-2 text-lg">
-        <span class="lang-btn" onclick="setLang('pl')">🇵🇱</span>
-        <span class="lang-btn" onclick="setLang('de')">🇩🇪</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- 🔹 Hero -->
-  <section class="bg-gradient-to-r from-[#0a1a2f] to-[#1e3a5f] text-white py-24 text-center">
-    <h2 class="text-4xl font-bold mb-4" data-pl="Polska fachowość, niemiecka precyzja" data-de="Polnische Facharbeit, deutsche Präzision">Polska fachowość, niemiecka precyzja</h2>
-    <p class="text-lg text-gray-200 max-w-2xl mx-auto" data-pl="Zaufaj doświadczeniu i rzetelności. Nasze realizacje mówią same za siebie." data-de="Vertrauen Sie auf Erfahrung und Zuverlässigkeit. Unsere Arbeiten sprechen für sich.">
-      Zaufaj doświadczeniu i rzetelności. Nasze realizacje mówią same za siebie.
-    </p>
-  </section>
-
-  <!-- 🔹 O nas -->
-  <section class="py-16 container mx-auto px-6">
-    <h3 class="text-3xl font-semibold text-center mb-8 text-[#0a1a2f]" data-pl="O nas" data-de="Über uns">O nas</h3>
-    <p class="text-center text-lg max-w-3xl mx-auto" data-pl="Firma Rafał Pistrakiewicz Bau & Renovierung działa na rynku niemieckim, oferując kompleksowe usługi budowlane i remontowe. Naszą misją jest połączenie polskiej solidności z niemiecką dokładnością." data-de="Das Unternehmen Rafał Pistrakiewicz Bau & Renovierung bietet auf dem deutschen Markt umfassende Bau- und Renovierungsdienstleistungen an. Unsere Mission ist es, polnische Zuverlässigkeit mit deutscher Präzision zu verbinden.">
-      Firma Rafał Pistrakiewicz Bau & Renovierung działa na rynku niemieckim, oferując kompleksowe usługi budowlane i remontowe. Naszą misją jest połączenie polskiej solidności z niemiecką dokładnością.
-    </p>
-  </section>
-
-  <!-- 🔹 Usługi -->
-  <section class="bg-[#f9fafb] py-16">
-    <div class="container mx-auto px-6">
-      <h3 class="text-3xl font-semibold text-center mb-12 text-[#0a1a2f]" data-pl="Nasze usługi" data-de="Unsere Dienstleistungen">Nasze usługi</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
-          <h4 class="text-xl font-semibold mb-2 text-[#d4af37]" data-pl="Remonty wnętrz" data-de="Innenrenovierungen">Remonty wnętrz</h4>
-          <p data-pl="Kompleksowe wykończenia mieszkań i domów." data-de="Komplette Renovierungen von Wohnungen und Häusern.">Kompleksowe wykończenia mieszkań i domów.</p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
-          <h4 class="text-xl font-semibold mb-2 text-[#d4af37]" data-pl="Budowa domów" data-de="Hausbau">Budowa domów</h4>
-          <p data-pl="Od fundamentów po dach – budujemy solidnie i terminowo." data-de="Vom Fundament bis zum Dach – solide und termingerecht.">Od fundamentów po dach – budujemy solidnie i terminowo.</p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
-          <h4 class="text-xl font-semibold mb-2 text-[#d4af37]" data-pl="Malowanie i elewacje" data-de="Malerarbeiten und Fassaden">Malowanie i elewacje</h4>
-          <p data-pl="Nowoczesne technologie i estetyka, która trwa latami." data-de="Moderne Technologien und Ästhetik, die jahrelang hält.">Nowoczesne technologie i estetyka, która trwa latami.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 🔹 Partnerzy -->
-  <section class="py-16 container mx-auto px-6">
-    <h3 class="text-3xl font-semibold text-center mb-12 text-[#0a1a2f]" data-pl="Partnerzy i współpraca" data-de="Partner und Zusammenarbeit">Partnerzy i współpraca</h3>
-    <div class="grid md:grid-cols-3 gap-8 text-center">
-      <div class="bg-white rounded-2xl p-6 shadow-md">
-        <img src="https://via.placeholder.com/150x80?text=Partner+1" class="mx-auto mb-4" alt="Partner 1">
-        <p>Pol-Bau GmbH</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-md">
-        <img src="https://via.placeholder.com/150x80?text=Partner+2" class="mx-auto mb-4" alt="Partner 2">
-        <p>HausRenovieren24</p>
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-md">
-        <img src="https://via.placeholder.com/150x80?text=Partner+3" class="mx-auto mb-4" alt="Partner 3">
-        <p>ElektroKraft</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 🔹 Kontakt -->
-  <section class="bg-[#0a1a2f] text-white py-16">
-    <div class="container mx-auto px-6 text-center">
-      <h3 class="text-3xl font-semibold mb-8 text-[#d4af37]" data-pl="Skontaktuj się z nami" data-de="Kontaktieren Sie uns">Skontaktuj się z nami</h3>
-      <p class="mb-4" data-pl="Zadzwoń lub napisz, aby omówić swój projekt." data-de="Rufen Sie an oder schreiben Sie uns, um Ihr Projekt zu besprechen.">Zadzwoń lub napisz, aby omówić swój projekt.</p>
-      <p class="text-lg font-semibold mb-2">📞 +49 123 456 7890</p>
-      <p class="text-lg font-semibold">✉️ kontakt@pistrakiewiczbau.de</p>
-    </div>
-  </section>
-
-  <!-- 🔹 Footer -->
-  <footer class="bg-[#081426] text-gray-400 py-6 text-center text-sm">
-    <p>© 2025 Rafał Pistrakiewicz Bau & Renovierung | Made with pride 🇵🇱 in Germany 🇩🇪</p>
-  </footer>
-
-  <!-- 🔧 Skrypt językowy -->
-  <script>
-    function setLang(lang) {
-      document.querySelectorAll("[data-" + lang + "]").forEach(el => {
-        el.textContent = el.getAttribute("data-" + lang);
-      });
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-pl], [data-de]').forEach(el => {
+    const key = el.getAttribute('data-pl') || el.textContent;
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
     }
-  </script>
+  });
+  
+  // Zapisz preferencje użytkownika
+  localStorage.setItem('preferredLang', lang);
+}
 
-</body>
-</html>
+// Przy ładowaniu strony
+document.addEventListener('DOMContentLoaded', function() {
+  const savedLang = localStorage.getItem('preferredLang') || 'pl';
+  setLang(savedLang);
+});
