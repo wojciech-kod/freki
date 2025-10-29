@@ -1,24 +1,193 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Freki – projekt Wojciecha</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rafał Pistrakiewicz – Remonty i Budowa | Polska Jakość w Niemczech</title>
+  <meta name="description" content="Rafał Pistrakiewicz — rzetelne remonty i prace budowlane w Niemczech. Terminowo, solidnie, po polsku i po niemiecku." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Małe dodatki */
+    .gold { color: #D4AF37; }
+    .gold-bg { background-color: #D4AF37; color: #071025; }
+    .card { background: #F8FAFC; color:#071025; border-radius:12px; padding:18px; box-shadow:0 6px 18px rgba(2,6,23,0.12); }
+    .hero-bg { background: linear-gradient(180deg, #0f1724 0%, #071025 100%); }
+    .btn-primary { background:#D4AF37; color:#071025; padding:10px 18px; border-radius:10px; font-weight:700; }
+    .small-muted { color:#9CA3AF; font-size:0.95rem; }
+  </style>
 </head>
-<body class="bg-black text-white">
-  <header class="text-center py-8 border-b border-yellow-500">
-    <h1 class="text-4xl font-bold text-yellow-400">Freki</h1>
-    <p class="text-gray-400">Nowy projekt Wojciecha – moc zaczyna się tutaj ⚡</p>
+<body class="hero-bg text-white antialiased">
+
+  <!-- HEADER -->
+  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl font-bold">Rafał <span class="gold">Pistrakiewicz</span></h1>
+      <div class="small-muted">Remonty • Wykończenia • Budowa — Niemcy</div>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button id="langToggle" class="px-3 py-1 border border-white rounded">DE / PL</button>
+      <a href="tel:+491234567890" class="px-4 py-2 bg-white text-black rounded font-semibold">Zadzwoń</a>
+    </div>
   </header>
 
-  <main class="text-center mt-16">
-    <h2 class="text-2xl font-semibold mb-4">Pierwszy krok za nami!</h2>
-    <p>Witamy w projekcie hostowanym na GitHub + Vercel 🚀</p>
-  </main>
+  <!-- HERO -->
+  <section class="max-w-6xl mx-auto p-6 text-center py-12">
+    <h2 id="heroTitle" class="text-4xl md:text-5xl font-extrabold mb-4">Polska rzetelność. Niemiecka precyzja.</h2>
+    <p id="heroSub" class="text-gray-300 max-w-2xl mx-auto mb-6">Kompleksowe remonty i prace wykończeniowe. Terminowo, czysto, z gwarancją jakości.</p>
+    <div class="flex justify-center space-x-4">
+      <a href="#contact" class="btn-primary">Poproś o wycenę</a>
+      <a href="#portfolio" class="px-4 py-2 border border-white rounded">Zobacz realizacje</a>
+    </div>
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+      <div class="card">
+        <h4 class="font-bold gold">Terminowość</h4>
+        <p class="small-muted">Szanujemy Twój czas — pracujemy zgodnie z ustaleniami.</p>
+      </div>
+      <div class="card">
+        <h4 class="font-bold gold">Jakość wykonania</h4>
+        <p class="small-muted">Materiały i technika dostosowane do oczekiwań i norm niemieckich.</p>
+      </div>
+      <div class="card">
+        <h4 class="font-bold gold">Komunikacja PL/DE</h4>
+        <p class="small-muted">Rozmawiamy po polsku i po niemiecku — pełna przejrzystość.</p>
+      </div>
+    </div>
+  </section>
 
-  <footer class="text-center mt-20 py-6 border-t border-yellow-500 text-sm text-gray-500">
-    © 2025 Freki. Wszelkie prawa zastrzeżone.
+  <!-- USŁUGI -->
+  <section id="services" class="max-w-6xl mx-auto p-6 py-8 bg-white text-black rounded-lg -mt-6 shadow-lg">
+    <h3 class="text-2xl font-bold mb-6">Usługi</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="p-4 border rounded">
+        <h4 class="font-semibold gold">Remonty mieszkań</h4>
+        <p class="small-muted">Kompleksowe wykończenia łazienek, kuchni, podłóg, ścian i sufitów.</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h4 class="font-semibold gold">Wykończenia pod klucz</h4>
+        <p class="small-muted">Koordynacja materiałów, ekip i terminów — gotowe do zamieszkania.</p>
+      </div>
+      <div class="p-4 border rounded">
+        <h4 class="font-semibold gold">Prace budowlane</h4>
+        <p class="small-muted">Nadzory, adaptacje poddaszy, małe roboty konstrukcyjne.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="max-w-6xl mx-auto p-6 py-10">
+    <h3 class="text-2xl font-bold mb-6 text-white">Realizacje</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="rounded overflow-hidden">
+        <img src="https://via.placeholder.com/600x400?text=Przed+%2F+Po" alt="projekt" class="w-full h-48 object-cover">
+        <div class="p-3 bg-white text-black">
+          <h4 class="font-semibold">Remont łazienki — Berlin</h4>
+          <p class="small-muted">Kompleksowe wykończenie, 2 tyg. realizacji.</p>
+        </div>
+      </div>
+      <div class="rounded overflow-hidden">
+        <img src="https://via.placeholder.com/600x400?text=Przed+%2F+Po" alt="projekt" class="w-full h-48 object-cover">
+        <div class="p-3 bg-white text-black">
+          <h4 class="font-semibold">Kuchnia pod klucz — Monachium</h4>
+          <p class="small-muted">Instalacje, wykończenia i montaż mebli.</p>
+        </div>
+      </div>
+      <div class="rounded overflow-hidden">
+        <img src="https://via.placeholder.com/600x400?text=Przed+%2F+Po" alt="projekt" class="w-full h-48 object-cover">
+        <div class="p-3 bg-white text-black">
+          <h4 class="font-semibold">Adaptacja poddasza — Hamburg</h4>
+          <p class="small-muted">Izolacja, konstrukcja i wykończenie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPINIE -->
+  <section id="reviews" class="max-w-6xl mx-auto p-6 py-10 bg-white text-black rounded-lg shadow-lg">
+    <h3 class="text-2xl font-bold mb-6">Opinie klientów</h3>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="p-4 border rounded">
+        <p class="italic">"Schnelle, saubere Arbeit. Sehr zuverlässig." — <b>M. Becker, Berlin</b></p>
+      </div>
+      <div class="p-4 border rounded">
+        <p class="italic">"Die Kommunikation war top, alles wie vereinbart." — <b>J. Müller, München</b></p>
+      </div>
+      <div class="p-4 border rounded">
+        <p class="italic">"Polecam, ekipa punktualna i bardzo dokładna." — <b>A. Kowalski, Hamburg</b></p>
+      </div>
+      <div class="p-4 border rounded">
+        <p class="italic">"Gute Qualität und fairer Preis." — <b>S. Wagner, Köln</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="max-w-6xl mx-auto p-6 py-10 text-white">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-2xl font-bold mb-4">Skontaktuj się</h3>
+        <p class="small-muted mb-4">Szybka wycena, odpowiedź w 24h. Możesz też zadzwonić.</p>
+        <ul class="space-y-2">
+          <li class="font-semibold">📞 <a href="tel:+491234567890" class="underline">+49 123 456 7890</a></li>
+          <li class="font-semibold">✉️ <a href="mailto:mielniczukgrzegosz74@gmail.com" class="underline">mielniczukgrzegosz74@gmail.com</a></li>
+          <li class="font-semibold">🇵🇱🇩🇪 Język: PL / DE</li>
+        </ul>
+      </div>
+      <div class="bg-white text-black p-6 rounded">
+        <form id="contactForm">
+          <label class="block mb-2 font-semibold">Imię i nazwisko</label>
+          <input type="text" id="cname" required class="w-full p-2 mb-3 border rounded" />
+          <label class="block mb-2 font-semibold">Adres / Miasto</label>
+          <input type="text" id="caddress" class="w-full p-2 mb-3 border rounded" />
+          <label class="block mb-2 font-semibold">Krótki opis zlecenia</label>
+          <textarea id="cmsg" required class="w-full p-2 mb-3 border rounded"></textarea>
+          <button type="submit" class="btn-primary w-full">Wyślij zapytanie</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto p-6 text-center text-gray-300">
+    <div>© 2025 Rafał Pistrakiewicz — Remonty i Budowa</div>
+    <div class="mt-2 small-muted">Działalność nierejestrowana. Kontakt: mielniczukgrzegosz74@gmail.com</div>
   </footer>
+
+  <script>
+    // PROSTE: przełączanie języka (PL/DE) — tylko zmienia teksty hero/CTA (można rozszerzyć)
+    const texts = {
+      pl: {
+        heroTitle: "Polska rzetelność. Niemiecka precyzja.",
+        heroSub: "Kompleksowe remonty i prace wykończeniowe. Terminowo, czysto, z gwarancją jakości.",
+        cta: "Poproś o wycenę"
+      },
+      de: {
+        heroTitle: "Polnische Zuverlässigkeit. Deutsche Präzision.",
+        heroSub: "Komplette Renovierungen und Ausbauarbeiten. Termintreu, sauber, mit Qualitätsgarantie.",
+        cta: "Angebot anfragen"
+      }
+    };
+    let lang = 'pl';
+    const heroTitle = document.getElementById('heroTitle');
+    const heroSub = document.getElementById('heroSub');
+    const langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', () => {
+      lang = (lang === 'pl') ? 'de' : 'pl';
+      heroTitle.textContent = texts[lang].heroTitle;
+      heroSub.textContent = texts[lang].heroSub;
+      // zmień przycisk CTA tekst (pierwszy)
+      document.querySelectorAll('.btn-primary').forEach(b => b.textContent = texts[lang].cta);
+    });
+
+    // prosty handler formularza (wysyła maila przez mailto)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('cname').value || '';
+      const addr = document.getElementById('caddress').value || '';
+      const msg = document.getElementById('cmsg').value || '';
+      const body = `Zlecenie od: ${name}%0AAdres: ${addr}%0A%0AOpis:%0A${encodeURIComponent(msg)}`;
+      window.location.href = `mailto:mielniczukgrzegosz74@gmail.com?subject=Zapytanie%20o%20wycene&body=${body}`;
+    });
+  </script>
 </body>
 </html>
