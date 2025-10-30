@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adelbertusshop – Symbol π</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    h1 {
+      font-size: 3em;
+      color: #f5b642;
+    }
+    p {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Adelbertusshop</h1>
+  <p>Symbol π – tajemnica, myśl, styl.</p>
+  <p>Nowa kolekcja już dostępna.</p>
+</body>
+</html>
+
